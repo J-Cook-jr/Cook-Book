@@ -1,22 +1,20 @@
 import React from 'react';
 import Recipes from './components/Recipes';
 import './App.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import RecipeDetails from './components/RecipeDetails';
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-
-    }
-
-  };
-  render() {
-    return (
+function App() {
+  return (
+    <BrowserRouter>
       <div className="App">
-        <Recipes />
+        <Switch>
+          <Route path="/" exact component={Recipes} />
+          <Route path="/recipes/:id" component={RecipeDetails} />
+        </Switch>
       </div>
-    );
-  }
+    </BrowserRouter>
+  );
 }
 
 export default App;
