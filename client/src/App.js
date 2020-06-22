@@ -3,6 +3,7 @@ import Recipes from './components/Recipes';
 import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import RecipeDetails from './components/RecipeDetails';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
