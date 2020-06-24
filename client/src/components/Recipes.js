@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import LikesButton from './LikesButton';
+import LikesButton from './LikeButton.js';
 
 export default class Recipes extends Component {
     constructor() {

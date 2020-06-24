@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import LikesButton from './LikesButton';
+import LikesButton from './LikeButton';
 
 export default class RecipeDetails extends Component {
     constructor(props) {
