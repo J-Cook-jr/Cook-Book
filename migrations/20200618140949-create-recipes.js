@@ -23,6 +23,9 @@ module.exports = {
       likes: {
         type: Sequelize.INTEGER
       },
+      dislikes:{
+        type:Sequelize.INTEGER
+      },
       vegetarian: {
         type: Sequelize.BOOLEAN
       },

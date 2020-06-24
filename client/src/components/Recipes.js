@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import LikesButton from './LikeButton.js';
+import LikesButton from './LikeButton';
+import DislikesButton from './DislikeButton';
 
 export default class Recipes extends Component {
     constructor() {
@@ -35,6 +36,20 @@ export default class Recipes extends Component {
         })
     }
 
+    handleDislike = (id, newDislikes) => {
+        const newRecipe = this.state.recipes.find((recipe) => recipe.id === id)
+        newRecipe.dislikes = newDislikes
+        const newRecipes = this.state.recipes.map(recipe => {
+            if (recipe.id === id) {
+                return newRecipe
+            }
+            return recipe;
+        })
+        this.setState({
+            recipes: newRecipes
+        })
+    }
+
     render() {
         return (
             <div>
@@ -45,6 +60,7 @@ export default class Recipes extends Component {
                             <p>{recipe.description}</p>
                             <Link to={`/recipes/${recipe.id}`}>Show Details</Link>
                             <LikesButton id={recipe.id} />
+                            <DislikesButton id={recipe.id} />
                         </div>
                     )
                 })}

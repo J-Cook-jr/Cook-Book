@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import LikesButton from './LikeButton';
+import DislikesButton from './DislikeButton';
 
 export default class RecipeDetails extends Component {
     constructor(props) {
@@ -37,6 +38,7 @@ export default class RecipeDetails extends Component {
                     <p>{details.description}</p>
                 </div>
                 <LikesButton id={details.id} />
+                <DislikesButton id={details.id} />
             </div>
         )
     }

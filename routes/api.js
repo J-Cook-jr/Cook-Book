@@ -1,8 +1,7 @@
-
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
-const { request } = require('../app');
+
 
 /* GET users listing. */
 router.get('/recipes', function (req, res, next) {
@@ -35,7 +34,7 @@ router.get('/recipes/:id', (req, res) => {
 })
 
 router.post('/recipes', (req, res) => {
-  const { name, review, description, url, likes, vegetarian, vegan, glutenfree, categories } = req.body;
+  const { name, review, description, url, likes, dislikes,vegetarian, vegan, glutenfree, categories } = req.body;
 
   if (!name) { res.status(400).json({ error: 'name field is required' }); }
   if (!review) { res.status(400).json({ error: 'review field is required' }); }
@@ -47,6 +46,7 @@ router.post('/recipes', (req, res) => {
     description: description || '',
     url: url,
     likes: likes || 0,
+    dislikes: dislikes || 0,
     vegetarian: vegetarian || false,
     vegan: vegan || false,
     glutenfree: glutenfree || false,
@@ -82,4 +82,27 @@ router.delete('/recipes/:id', (req, res) => {
       }
     })
 })
+
+router.post('/recipes/:id/likes', (req, res) => {
+  db.Recipes.findByPk(req.params.id)
+    .then(recipe => {
+      recipe.likes++
+      return recipe.save();
+    })
+    .then(recipe => {
+      res.json(recipe.likes);
+    })
+})
+
+router.post('/recipes/:id/dislikes', (req, res) => {
+  db.Recipes.findByPk(req.params.id)
+    .then(recipe => {
+      recipe.dislikes++
+      return recipe.save();
+    })
+    .then(recipe => {
+      res.json(recipe.dislikes);
+    })
+})
+
 module.exports = router;

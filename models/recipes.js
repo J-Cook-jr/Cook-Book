@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.TEXT,
     url: DataTypes.TEXT,
     likes: DataTypes.INTEGER,
+    dislikes: DataTypes.INTEGER,
     vegetarian: DataTypes.BOOLEAN,
     vegan: DataTypes.BOOLEAN,
     glutenfree: DataTypes.BOOLEAN
